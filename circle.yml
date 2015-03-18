@@ -1,0 +1,21 @@
+machine:
+  pre:
+    # curl for 0.12.0 until circle adds support
+    - curl https://raw.githubusercontent.com/creationix/nvm/v0.23.3/install.sh | bash
+  node:
+    version: v0.12.0
+
+test:
+    pre:
+    override:
+
+deployment:
+    production:
+        branch: develop
+        commands:
+            - npm run build
+            - 'git config --global user.email "circleci@thinkful.com"'
+            - 'git config --global user.name "CircleCI"'
+            - git add -f ./public/build
+            - 'git commit -m "CI build."'
+            - git push git@heroku.com:react-starter.git HEAD:master --force
