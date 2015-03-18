@@ -1,0 +1,1 @@
+web: DEBUG='app:*,express:router' NODE_ENV=production node --harmony server.js
