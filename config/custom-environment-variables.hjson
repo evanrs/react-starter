@@ -1,0 +1,33 @@
+{
+    api: {
+        users: {
+            url: USERS_API_URL
+        }
+    }
+
+    app: {
+        services: {
+            logentries: {
+                token: LOGENTRIES_TOKEN
+            }
+            segmentio: {
+                token: SEGMENTIO_TOKEN
+            }
+        }
+        support: {
+            email: SUPPORT_EMAIL
+        }
+    }
+
+    server: {
+        port: PORT
+    }
+
+    redis: {
+        url: REDISCLOUD_URL
+    }
+
+    newrelic: {
+        licenseKey: NEW_RELIC_LICENSE_KEY:
+    }
+}

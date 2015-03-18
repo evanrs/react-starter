@@ -1,0 +1,16 @@
+@import "./vars";
+
+.page-title {
+  margin-bottom: @gutter-px/2;
+}
+.page-container {
+  .centered-container;
+  .grid-container;
+
+  @media @mobile {
+    display: flex;
+    flex-direction: column;
+    .centered-container-mobile;
+  }
+
+}

@@ -1,0 +1,33 @@
+@import "./vars";
+
+body {
+  min-height: 100%;
+  background: @offwhite url('/public/assets/delorean-dynamite.gif') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.meeter-greeter {
+    .fixed-centered;
+    transform: translate(-40%, -50%);
+
+    &.invisible {
+        opacity: 1;
+    }
+}
+
+h1.react-starter {
+    position: absolute;
+    left: 50%;
+    top: 23%;
+    width: 100%;
+    font-size: 7rem;
+    transform: translate(-50%, -100%);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5);
+    @media @mobile {
+        font-size: 5rem;
+    }
+}
