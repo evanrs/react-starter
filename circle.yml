@@ -1,0 +1,38 @@
+## Customize the test machine
+machine:
+  node:
+    version: v0.10.28
+
+  # Add some environment variables
+  environment:
+    IN_CI: 1
+    NODE_ENV: production
+
+## Customize dependencies
+dependencies:
+  override:
+    - ./script/install
+
+## Customize test commands
+test:
+  pre:
+    - ./script/build
+  override:
+    - ./script/test
+  post:
+    - npm run build
+    - 'git config --global user.email "circleci@thinkful.com"'
+    - 'git config --global user.name "CircleCI"'
+    - git add -f ./public/build
+    - 'git commit -m "CI build."'
+
+# deployment (uses the --force for static/build)
+deployment:
+  staging:
+    branch: develop
+    commands:
+      - git push git@heroku.com:react-starter.git HEAD:master --force
+  production:
+    branch: master
+    commands:
+      - git push git@heroku.com:react-starter.git HEAD:master --force

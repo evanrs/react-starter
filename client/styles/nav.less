@@ -1,0 +1,344 @@
+@import "./vars";
+
+.top-nav {
+    position: relative;
+    height: 56px;
+    top: 0px;
+    z-index: 15;
+    .selected {
+      color: @blue75;
+      border-color: @blue75;
+    }
+}
+
+// TODO: simplify this
+.nav-container {
+    position: relative;
+    z-index: 1;
+    color: @black;
+    border-bottom: 1px solid @lightgray;
+    background-color: @white;
+
+    .top-nav {
+        max-width: @grid-width;
+        margin: 0 auto;
+    }
+}
+
+.nav-container.nav-container__home {
+    border-bottom: none;
+    .top-nav {
+        max-width: @grid-width;
+        position: absolute;
+        background-color: transparent;
+        transition: background-color 0.35s ease;
+        text-align: left;
+        left: 0;
+        right: 0;
+
+        &.navigation__visible {
+          background-color: @blue;
+        }
+
+        @media @nonmobile {
+          &.navigation__visible {
+            background-color: transparent;
+          }
+        }
+    }
+
+    .nav-link {
+        color: @offwhite;
+        &:hover {
+            color: @gray;
+        }
+
+        @media @nonmobile {
+          padding-bottom: 0;
+        }
+    }
+
+    .nav-logo {
+        svg #thinkful_logo {
+            fill: @offwhite;
+        }
+        &:hover svg #thinkful_logo {
+            fill: @gray;
+        }
+    }
+}
+
+.nav-list {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: @blue;
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translate(-100%, 56px);
+    transition: transform 0.35s ease,
+                opacity 0.15s ease,
+                max-width 0.35s ease;
+
+    .navigation__visible & {
+      transform: translate(0px, 56px);
+      max-width: 640px;
+      opacity: 1;
+      transition: transform 0.35s ease,
+                  opacity 0.15s ease 0.1s,
+                  max-width 0.35s ease;
+
+      @media @nonmobile {
+        transform: none;
+        background-color: transparent;
+        max-width: none;
+      }
+    }
+
+    @media @nonmobile {
+      left: auto;
+      right: 32px;
+      max-width: none;
+      transform: translate(0px);
+      opacity: 1;
+      background-color: transparent;
+    }
+
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      &::before {
+        content: none;
+        display: none;
+      }
+
+      @media @nonmobile {
+        display: inline-block;
+      }
+    }
+}
+
+.nav-logo {
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    top: 0;
+    padding: 14px 20px 12px 20px;
+
+    @media @nonmobile {
+      position: static;
+      padding-left: 32px;
+    }
+
+    @media @bigger {
+      padding-left: 0;
+    }
+
+    svg {
+      position: relative;
+      #thinkful_logo {
+        fill: @blue;
+        transition: fill 0.19s ease;
+      }
+    }
+
+    &:hover {
+      svg #thinkful_logo {
+        fill: @blue75;
+      }
+    }
+}
+
+.nav-link {
+    .proxima-light;
+    display: block;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: 1px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-left: 0;
+
+    color: @white;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.35s ease;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: @blue25;
+    }
+
+    &:visited,
+    &:focus {
+        outline: none;
+    }
+
+    @media @nonmobile {
+      display: inline-block;
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: 12px;
+      text-align: left;
+      color: @blue;
+      &:hover,
+      &:active,
+      &:focus {
+        color: @blue75;
+      }
+    }
+
+    @media @big {
+      margin-left: 28px;
+    }
+
+    &:target {
+      .proxima-bold;
+    }
+
+    &.nav-link__mobile {
+      height: 56px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding-right: 20px;
+      padding-left: 20px;
+      cursor: pointer;
+      color: @blue;
+
+      &:hover {
+        border-color: transparent;
+        color: @blue75;
+      }
+
+      @media @nonmobile {
+        display: none;
+      }
+    }
+
+    &.nav-link__icon {
+      display: inline-block;
+      vertical-align: middle;
+      height: 56px;
+      padding: 15px 0 10px;
+      margin-left: 0;
+      border-bottom-width: 3px;
+
+      img {
+        height: 28px;
+      }
+
+      .floating-header__current & {
+        padding: 17px 0 13px;
+        img {
+          height: 22px;
+        }
+      }
+    }
+}
+
+.burger {
+  &::before {
+    content: "Menu";
+  }
+
+  display: block;
+  height: 24px;
+  border-right-width: 0;
+  border-left-width: 0;
+  border-radius: 1px;
+
+  .navigation__visible & {
+    &::before {
+      content: "Close";
+    }
+  }
+}
+
+
+.floating-header {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translate(0, -57px);
+  transition: transform 0.45s ease;
+
+  background-color: @lightgray;
+
+  body.enable-floating-header & {
+    display: block;
+  }
+
+  &.floating-header__visible {
+    transform: translate(0, 0);
+  }
+}
+
+.floating-header-content {
+  position: relative;
+  .centered-container;
+}
+
+.floating-navigation {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  left: 0;
+
+  @media @nonmobile {
+    right: 32px;
+  }
+
+  .nav-list {
+    background-color: @black;
+    @media @nonmobile {
+      background-color: transparent;
+    }
+  }
+
+  .nav-link {
+    &:hover, &:active, &:focus {
+    }
+
+    &.selected {
+      color: @blue75;
+    }
+
+    @media @nonmobile {
+      color: @darkgray;
+    }
+  }
+
+  .burger {
+    color: @black;
+    &:hover {
+      border-color: @black;
+    }
+  }
+
+  &.navigation__visible {
+    .nav-list {
+      background: @black;
+      @media @nonmobile {
+        background-color: transparent;
+      }
+    }
+
+    .nav-link {
+      color: white;
+      &:hover, &:active, &:focus {
+        border-bottom-color: @black;
+      }
+    }
+  }
+}

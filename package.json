@@ -1,0 +1,73 @@
+{
+  "name": "react-starter",
+  "version": "1.0.0",
+  "description": "A React starter kit using Reflux and Express with hotloading.",
+  "main": "server.js",
+  "scripts": {
+    "dev": "NODE_ENV=development DEBUG='*' supervisor --harmony --ignore public/build/ -e md,js,es6,jsx server & npm run hotload",
+    "debug": "node-inspector & NODE_ENV=development DEBUG='*' supervisor --debug --harmony --ignore public/build/ -e md,js,es6,jsx server & npm run hotload",
+    "build": "NODE_ENV=production webpack -p --progress --colors",
+    "hotload": "NODE_ENV=development DEBUG=webpack:* node --harmony server/hotload",
+    "start": "node --harmony server",
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evanrs/react-starter.git"
+  },
+  "author": "Evan Schneider",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^4.6.6",
+    "bluebird": "^2.9.13",
+    "body-parser": "^1.12.2",
+    "compression": "^1.4.3",
+    "config": "^1.12.0",
+    "cookie-parser": "^1.3.4",
+    "csurf": "^1.7.0",
+    "debug": "^2.1.3",
+    "express": "^4.12.3",
+    "hjson": "^1.6.3",
+    "lodash": "^3.3.1",
+    "node-jsx": "^0.12.4",
+    "passport": "^0.2.1",
+    "react": "~0.12.2",
+    "react-analytics": "^1.0.3",
+    "react-router": "^0.12.4",
+    "react-tap-event-plugin": "^0.1.4",
+    "redis": "^0.12.1",
+    "reflux": "^0.2.6",
+    "serialize-javascript": "^1.0.0",
+    "serve-favicon": "^2.2.0",
+    "setimmediate2": "^1.1.4",
+    "superagent": "^0.21.0",
+    "supervisor": "^0.6.0",
+    "tfstyleguide": "^1.0.8"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "^1.2.0",
+    "babel-core": "^4.6.6",
+    "babel-loader": "^4.0.0",
+    "babel-runtime": "^4.6.6",
+    "chai": "^2.1.1",
+    "chai-as-promised": "^4.2.0",
+    "css-loader": "^0.9.1",
+    "extract-text-webpack-plugin": "^0.3.8",
+    "json-loader": "^0.5.1",
+    "jsx-loader": "^0.12.2",
+    "less": "^2.4.0",
+    "less-loader": "^2.0.0",
+    "mocha": "^2.1.0",
+    "node-notifier": "^4.1.2",
+    "protractor": "^1.8.0",
+    "react-hot-loader": "^1.1.7",
+    "react-tools": "^0.12.2",
+    "style-loader": "^0.8.3",
+    "webpack": "^1.7.2",
+    "webpack-dev-server": "^1.7.0"
+  },
+  "bugs": {
+    "url": "https://github.com/evanrs/react-starter/issues"
+  },
+  "homepage": "https://github.com/evanrs/react-starter"
+}

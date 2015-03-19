@@ -1,0 +1,53 @@
+@import "~tfstyleguide/core";
+@import "./vars";
+
+html, body {
+  min-height: 100%;
+  background-color: @offwhite;
+}
+
+img {
+  max-width: 100%;
+}
+
+p {
+  font-weight: normal;
+  max-width: 100%;
+  margin-bottom: 0;
+  margin-right: 0;
+}
+
+hr {
+    border-bottom-width: 0px;
+    box-shadow: 0px 4px 0px darken(@lightgray, 2%);
+}
+
+input {
+    background-color: @white;
+    box-shadow: 0px 0px 0px 2px darken(@lightgray, 2%);
+    outline: none;
+    &:focus {
+      box-shadow: none;
+    }
+    &[disabled] {
+        color: @black;
+        box-shadow: 0px 0px 0px 2px darken(@lightgray, 2%);
+        background-color: @offwhite;
+    }
+    &[type="submit"] {
+        background-color: @white;
+        &:focus {
+            box-shadow: 0px 0px 6px @blue;
+        }
+        &[disabled] {
+            color: @gray;
+            border-color: @white;
+            background-color: @white;
+            cursor: default;
+        }
+    }
+}
+
+.invisible {
+  opacity: 0;
+}

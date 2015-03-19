@@ -1,0 +1,20 @@
+# http://hjson.org/
+{
+    # Publicly exposed properties
+    app: {
+        name: React Starter
+        # Enumeration of services, there should be no default keys
+        services: {
+            logentries: {}
+            segmentio: {}
+        }
+    }
+
+    redis: {
+        url: ""
+    }
+
+    webpack: {
+        hotload: false
+    }
+}
