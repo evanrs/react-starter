@@ -1,2 +1,2 @@
 require('./rubix-plugins');
-require('./global/requires')
+// require('./global/requires/requires')

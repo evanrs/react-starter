@@ -9,16 +9,12 @@ require('jquery');
 require('jquery-ui');
 require('bootstrap');
 require('p-scrollbar');
-require('ion.tabs');
-require('ion.rangeSlider');
 require('bootstrap-slider');
 require('sparklines');
-require('jquery.knob');
 require('moment');
 require('vex');
 require('messenger');
 require('select2');
-require('xeditable');
 require('typeahead');
 require('jquery-steps');
 require('jquery-validate');
@@ -32,7 +28,7 @@ require('jcrop');
 require('bootstrap-datetimepicker');
 require('blueimp-gallery');
 require('chart.js');
-require('c3js');
+require('c3');
 require('leaflet');
 require('l20n');
 require('trumbowyg');
@@ -49,3 +45,11 @@ require('prism');
 require('switchery');
 require('holder');
 require('showdown');
+
+// require('xeditable'); // X-editable
+// require('jquery.knob'); // use require('knob')
+// require('ion.tabs');
+// require('ion.rangeSlider');
+// require('nestable')
+// require('jquery-validate');
+// require('jquery-steps');
