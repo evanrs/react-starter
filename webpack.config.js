@@ -9,6 +9,9 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HOTLOAD = config.has('webpack.hotload') && config.get('webpack.hotload');
 
 var loaders = {
+  transform: {
+    test: /\.(es6|jsx)$/, loader: 'transform?brfs'},
+
   es6: {
     test: /\.(es6|jsx)$/,
     loaders: ['babel?experimental'] },
@@ -22,20 +25,35 @@ var loaders = {
       ExtractTextPlugin.extract(
         'css!autoprefixer!less', { publicPath: './public/build/' }) },
 
+
   lessUsable: {
     test: /\.useable\.less$/, loader: "style/useable!css!autoprefixer!less"
+  },
+
+  sass: {
+    test: /\.(sass|scss)$/,
+    exclude: /\.useable\.(sass|scss)$/,
+    loader:
+      ExtractTextPlugin.extract(
+        'css!autoprefixer!sass', { publicPath: './public/build/' }) },
+
+  sassUsable: {
+    test: /\.useable\.(sass|scss)$/, loader: "style/useable!css!autoprefixer!sass"
   }
 }
 
 var webpackConfig = {
   cache: true,
-  entry: ['./client/index.js'],
+  entry: ['./client/index.es6'],
   module: {
     loaders: [
+      loaders.transform,
       loaders.es6,
       loaders.json,
       loaders.less,
-      loaders.lessUsable ] },
+      loaders.lessUsable,
+      loaders.sass,
+      loaders.sassUsable ] },
   output: {
     path: path.join(__dirname, '/public/build/'),
     publicPath: '/public/',
@@ -46,7 +64,11 @@ var webpackConfig = {
         'style', 'main.css', { disable: false, allChunks: true })],
   resolve: {
     extensions: ['', '.js', '.jsx', '.es', '.es6'],
-    alias: {app: path.join(__dirname, "client")}
+    alias: {
+        app: path.join(__dirname, "client"),
+        client: path.join(__dirname, "client"),
+        server: path.join(__dirname, "server"),
+        rubix: path.join(__dirname, "rubix")}
   }
 };
 
@@ -55,12 +77,13 @@ if (HOTLOAD) {
   webpackConfig.entry = [
     'webpack-dev-server/client?http://localhost:8888',
     'webpack/hot/dev-server',
-    './client/index.js'
+    './client/index.es6'
   ];
 
   webpackConfig.output.publicPath = 'http://localhost:8888/public/build/';
   loaders.es6.loaders = ['react-hot', 'babel?experimental&optional=runtime'];
   loaders.less.loader = 'style!css!autoprefixer!less';
+  loaders.sass.loader = 'style!css!autoprefixer!sass';
 
   webpackConfig.plugins = [
     new webpack.HotModuleReplacementPlugin(),

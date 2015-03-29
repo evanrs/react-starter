@@ -15,6 +15,12 @@ var compiler = webpack(webpackConfig);
 compiler.plugin("done", function (stats) {
     var errors = stats.compilation.errors;
     if (errors.length) {
+        errors.forEach(function (err) {
+            try {
+                console.log(err);
+
+            } catch(e) {}
+        })
         notifier.notify({
             title: errors[0].module.rawRequest.replace('.', NAME),
             message: errors[0].error.message.split(': ').join('\n')

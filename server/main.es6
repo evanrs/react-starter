@@ -28,7 +28,8 @@ import serialize from 'serialize-javascript';
 // Equivalent to templates/layout.html,
 // it will inject a rendered app, and serialized state
 //
-import Layout from './layout';
+import Layout from 'server/components/Layout';
+import Page from 'app/components/Page';
 
 // Create server
 const server = express();
@@ -61,15 +62,16 @@ server.use(
         }
     };
 
+    // Creates HTML with react-ids for mounting clientside
+    const currentPage = React.renderToString(React.createElement(Page));
+
     // Renders current app state to HTML
     // Injects markup and state into layout
     let html = React.renderToStaticMarkup(
         React.createElement(Layout, {
-            markup: 'Hello!',
+            markup: currentPage,
             // Exposes current app state to client
-            state: `window.App=${serialize(exposedState)};`
-        })
-    );
+            state: `window.App=${serialize(exposedState)};`}, currentPage));
 
     // Sends it on its way
     res.write(html);
