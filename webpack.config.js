@@ -16,6 +16,7 @@ var loaders = {
     test: /\.(es6|jsx)$/,
     loaders: ['babel?experimental'] },
 
+  file: { test: /\.png$/, loaders: ['url?limit=10000&mimetype=image/png'] },
   json: { test: /\.json$/, loaders: ['json'] },
 
   less: {
@@ -35,7 +36,10 @@ var loaders = {
     exclude: /\.useable\.(sass|scss)$/,
     loader:
       ExtractTextPlugin.extract(
-        'css!autoprefixer!sass', { publicPath: './public/build/' }) },
+        'css!autoprefixer!sass'  + '?' +
+            "includePaths[]=" + (path.resolve(__dirname, "./rubix/node_modules")) + "&" +
+            "includePaths[]=" + (path.resolve(__dirname, "./rubix/global"))
+      ,  { publicPath: './public/build/' }) },
 
   sassUsable: {
     test: /\.useable\.(sass|scss)$/, loader: "style/useable!css!autoprefixer!sass"
@@ -49,6 +53,7 @@ var webpackConfig = {
     loaders: [
       loaders.transform,
       loaders.es6,
+      loaders.file,
       loaders.json,
       loaders.less,
       loaders.lessUsable,
@@ -83,7 +88,9 @@ if (HOTLOAD) {
   webpackConfig.output.publicPath = 'http://localhost:8888/public/build/';
   loaders.es6.loaders = ['react-hot', 'babel?experimental&optional=runtime'];
   loaders.less.loader = 'style!css!autoprefixer!less';
-  loaders.sass.loader = 'style!css!autoprefixer!sass';
+  loaders.sass.loader = 'style!css!autoprefixer!sass'   + '?' +
+    "includePaths[]=" + (path.resolve(__dirname, "./rubix/node_modules")) + "&" +
+    "includePaths[]=" + (path.resolve(__dirname, "./rubix/global"));
 
   webpackConfig.plugins = [
     new webpack.HotModuleReplacementPlugin(),

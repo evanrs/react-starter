@@ -39,6 +39,7 @@
     "dropzone": "^4.0.1",
     "eventemitter2": "^0.4.14",
     "express": "^5.0.0-alpha.1",
+    "file-loader": "^0.8.1",
     "fullcalendar": "^2.3.1",
     "hjson": "^1.6.3",
     "holder": "0.0.0",
@@ -68,7 +69,7 @@
     "react-tap-event-plugin": "^0.1.6",
     "redis": "^0.12.1",
     "reflux": "^0.2.7",
-    "sass-loader": "^1.0.0",
+    "sass-loader": "<1.0.0",
     "select2": "^3.5.2-browserify",
     "serialize-javascript": "^1.0.0",
     "serve-favicon": "^2.2.0",
@@ -84,6 +85,7 @@
     "timeline": "0.0.1",
     "transform-loader": "*",
     "typeahead": "*",
+    "url-loader": "^0.5.5",
     "vex": "0.0.4"
   },
   "devDependencies": {

@@ -17,6 +17,7 @@ compiler.plugin("done", function (stats) {
     if (errors.length) {
         errors.forEach(function (err) {
             try {
+                console.log("ERROR");
                 console.log(err);
 
             } catch(e) {}
