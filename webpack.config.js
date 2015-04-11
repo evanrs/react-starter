@@ -11,7 +11,7 @@ var HOTLOAD = config.has('webpack.hotload') && config.get('webpack.hotload');
 var loaders = {
   es6: {
     test: /\.(es6|jsx)$/,
-    loaders: ['babel?experimental'] },
+    loaders: ['babel?stage=0'] },
 
   json: { test: /\.json$/, loaders: ['json'] },
 
@@ -29,7 +29,7 @@ var loaders = {
 
 var webpackConfig = {
   cache: true,
-  entry: ['./client/index.js'],
+  entry: ['./client/index.es6'],
   module: {
     loaders: [
       loaders.es6,
@@ -46,7 +46,12 @@ var webpackConfig = {
         'style', 'main.css', { disable: false, allChunks: true })],
   resolve: {
     extensions: ['', '.js', '.jsx', '.es', '.es6'],
-    alias: {app: path.join(__dirname, "client")}
+    alias: {
+        app: path.join(__dirname, "client"),
+        components: path.join(__dirname, "client", "components"),
+        entities: path.join(__dirname, "client", "entities"),
+        systems: path.join(__dirname, "client", "systems"),
+        styles: path.join(__dirname, "client", "styles")}
   }
 };
 
@@ -55,11 +60,11 @@ if (HOTLOAD) {
   webpackConfig.entry = [
     'webpack-dev-server/client?http://localhost:8888',
     'webpack/hot/dev-server',
-    './client/index.js'
+    './client/index.es6'
   ];
 
   webpackConfig.output.publicPath = 'http://localhost:8888/public/build/';
-  loaders.es6.loaders = ['react-hot', 'babel?experimental&optional=runtime'];
+  loaders.es6.loaders = ['react-hot', 'babel?stage=0&optional=runtime'];
   loaders.less.loader = 'style!css!autoprefixer!less';
 
   webpackConfig.plugins = [
