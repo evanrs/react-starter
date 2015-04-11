@@ -3,7 +3,6 @@ import React from 'react';
 import config from 'config';
 
 import ApplicationStore from '../stores/ApplicationStore';
-import SegmentioSnippet from 'react-analytics';
 
 const SEGMENTIO = config.get('app.services.segmentio');
 const WEBPACK = config.get('webpack');
@@ -26,7 +25,6 @@ const Html = React.createClass({
             </head>
             <body>
                 <div id="app" dangerouslySetInnerHTML={{__html: this.props.markup}}></div>
-                <SegmentioSnippet writeKey={SEGMENTIO.key} />
                 <script dangerouslySetInnerHTML={{__html: this.props.state}}></script>
                 <script src={CLIENT_SRC} defer></script>
             </body>
