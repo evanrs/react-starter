@@ -1,8 +1,10 @@
 import debug from 'debug';
-const log = debug('entity:bird');
 
 import {BirdGraphicsComponent} from 'components/graphics/bird';
 import {PhysicsComponent} from 'components/physics/physics';
+
+const log = debug('entity:bird');
+
 class Bird {
     constructor() {
         log("creating");

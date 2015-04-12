@@ -11,9 +11,6 @@ class BirdGraphicsComponent {
 
     draw(context) {
         let {x, y} = this.entity.components.physics.position;
-
-        // log("I be drawin");
-        log(x, y);
         context.save();
         context.translate(x, y);
         context.beginPath();

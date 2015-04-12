@@ -6,7 +6,7 @@ import {Pipe} from 'entities/pipe';
 
 class FlappyBird {
     constructor() {
-        this.entities = [new Bird()];
+        this.entities = [new Bird(), new Pipe()];
         this.graphics = new GraphicsSystem(this.entities);
         this.physics = new PhysicsSystem(this.entities);
         this.input = new InputSystem(this.entities);

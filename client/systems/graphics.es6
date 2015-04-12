@@ -24,13 +24,10 @@ class GraphicsSystem {
         this.context.translate(this.canvas.width / 2, this.canvas.height);
         this.context.scale(this.canvas.height, -this.canvas.height);
 
-        for (let i = 0; i < this.entities.length; i++) {
-            let entity = this.entities[i];
-
-            if (! 'graphics' in entity.components) continue;
-
-            entity.components.graphics.draw(this.context);
-        }
+        this.entities
+            .map(entity => entity.components.graphics)
+            .filter(graphics => !! graphics && graphics.draw)
+            .forEach(graphics => graphics.draw(this.context));
 
         this.context.restore();
 
