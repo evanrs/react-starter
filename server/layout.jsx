@@ -24,7 +24,7 @@ const Html = React.createClass({
                 <link rel="stylesheet" href="/public/webfonts/ss-gizmo.css" />
             </head>
             <body>
-                <div id="app" dangerouslySetInnerHTML={{__html: this.props.markup}}></div>
+                <canvas id="main-canvas"></canvas>
                 <script dangerouslySetInnerHTML={{__html: this.props.state}}></script>
                 <script src={CLIENT_SRC} defer></script>
             </body>

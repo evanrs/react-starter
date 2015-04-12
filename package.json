@@ -4,8 +4,8 @@
   "description": "A React starter kit using Reflux and Express with hotloading.",
   "main": "server.js",
   "scripts": {
-    "dev": "NODE_ENV=development DEBUG='*' supervisor --harmony --ignore public/build/ -e md,js,es6,jsx server & npm run hotload",
-    "debug": "node-inspector & NODE_ENV=development DEBUG='*' supervisor --debug --harmony --ignore public/build/ -e md,js,es6,jsx server & npm run hotload",
+    "dev": "NODE_ENV=development DEBUG='*' supervisor --harmony --ignore public/build/,client -e md,js,es6,jsx server & npm run hotload",
+    "debug": "node-inspector & NODE_ENV=development DEBUG='*' supervisor --debug --harmony --ignore public/build/,client -e md,js,es6,jsx server & npm run hotload",
     "build": "NODE_ENV=production webpack -p --progress --colors",
     "hotload": "NODE_ENV=development DEBUG=webpack:* node --harmony server/hotload",
     "start": "node --harmony server",
