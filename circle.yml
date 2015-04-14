@@ -29,7 +29,7 @@ test:
 # deployment (uses the --force for static/build)
 deployment:
   staging:
-    branch: develop
+    branch: feature/live-hot-loader
     commands:
       - git push git@heroku.com:react-starter.git HEAD:master --force
   production:
