@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    React Crash Course Demo
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./public/css/poole.css">
+  <link rel="stylesheet" href="./public/css/syntax.css">
+  <link rel="stylesheet" href="./public/css/theme.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="./public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="./atom.xml">
+
+  <link rel="stylesheet" href="./public/css/syntax.css">
+  <link rel="stylesheet" href="./public/css/codemirror.css">
+  <link rel="stylesheet" href="./public/css/playground.css">
+  <link rel="stylesheet" href="./public/css/playgroundPreview.css">
+
+  <script type="text/javascript" src="./public/js/codemirror.js"></script>
+  <script type="text/javascript" src="./public/js/javascript.js"></script>
+  <script type="text/javascript" src="./public/js/react.js"></script>
+  <script type="text/javascript" src="./public/js/JSXTransformer.js"></script>
+  <script type="text/javascript" src="./public/js/ReactHotAPI.js"></script>
+  <script type="text/javascript" src="./public/js/live_editor.js"></script>
+  <script type="text/javascript" src="./public/js/tweenState.js"></script>
+</head>
+<body>
+<div class="page page--home">
+  <h2 class="page-title">Live Demo</h2>
+  <p class="lead">
+    Edit the component below.
+    <br>
+  </p>
+
+  <div id='example'></div>
+  <script>
+    (function(){ })
+    var HELLO_COMPONENT = (function(){/*start*/
+module.exports = React.createClass({
+  displayName: "HelloWorld",
+  render: function () {
+    return React.createElement(
+      "header", {
+          style: {
+              backgroundColor: "#6af",
+                padding: 20,
+                textAlign: "center", }},
+            React.createElement("h1", null, "Hello World"))
+  }
+});
+
+React.createClass({
+  displayName: "HelloWorld",
+  render: function () {
+    return React.createElement("h1", null, "Hello World")
+  }
+});
+    /*end*/}).toString().split('start*/\n')[1].split('/*end')[0];
+    React.render(
+      React.createElement(ReactPlayground, {codeText: HELLO_COMPONENT}),
+      document.getElementById('example')
+    );
+  </script>
+
+</div>
+</body>
+</html>
