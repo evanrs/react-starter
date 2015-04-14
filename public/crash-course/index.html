@@ -35,6 +35,7 @@
   <script type="text/javascript" src="./public/js/ReactHotAPI.js"></script>
   <script type="text/javascript" src="./public/js/live_editor.js"></script>
   <script type="text/javascript" src="./public/js/tweenState.js"></script>
+  <script type="text/javascript" src="./public/js/hello.js"></script>
 </head>
 <body>
 <div class="page page--home">
@@ -47,27 +48,6 @@
   <div id='example'></div>
   <script>
     (function(){ })
-    var HELLO_COMPONENT = (function(){/*start*/
-module.exports = React.createClass({
-  displayName: "HelloWorld",
-  render: function () {
-    return React.createElement(
-      "header", {
-          style: {
-              backgroundColor: "#6af",
-                padding: 20,
-                textAlign: "center", }},
-            React.createElement("h1", null, "Hello World"))
-  }
-});
-
-React.createClass({
-  displayName: "HelloWorld",
-  render: function () {
-    return React.createElement("h1", null, "Hello World")
-  }
-});
-    /*end*/}).toString().split('start*/\n')[1].split('/*end')[0];
     React.render(
       React.createElement(ReactPlayground, {codeText: HELLO_COMPONENT}),
       document.getElementById('example')
